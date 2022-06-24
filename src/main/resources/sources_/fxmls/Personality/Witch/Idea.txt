@@ -1,0 +1,4 @@
+In pratica nelle schermata2 si dovrebbero rendere selezionabili 3 studenti dalla hall. 
+Ci sono due schermate:
+	- una per il possessore della carta;
+	- una per gli altri giocatori, dato che anche loro dovranno selezionare 3 studenti dalla hall per buttarli via.

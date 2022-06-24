@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.mainController">
+   <children>
+      <SplitPane fx:id="rightSplit" dividerPositions="0.6975446428571429" layoutX="245.0" layoutY="87.0"  prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <SplitPane fx:id="bottomSplit" dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="200.0">
+               <items>
+                  <AnchorPane fx:id="topAnchor" onMouseClicked="#onTopClick" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="200.0" prefWidth="200.0" />
+                  <fx:include fx:id="bottomAnchor" maxHeight="1000.0" maxWidth="1000.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onBottomClick" source="scene_bottom.fxml" />
+               </items>
+            </SplitPane>
+            <fx:include fx:id="rightAnchor" maxHeight="1000.0" maxWidth="2000.0" minHeight="0.0" minWidth="0.0" onMouseClicked="#onRightClick" source="scene_right.fxml" />
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

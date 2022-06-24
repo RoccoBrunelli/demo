@@ -1,0 +1,5 @@
+E' necessario selezionare 3 studenti dalla hall e 3 studenti dall'enter. Potremmo fare così:
+	- prendiamo in considerazione la Hall:
+		- il giocatore ha la possibiltà di selezionare al più 3 studenti. Dopo la scelta del 3 studente, non è possibile selezionare altro.
+		  Il giocatore può deselezionare uno studente scelto ri-cliccandoci sopra. Potrà allora selezionare un nuovo studente
+	- stessa cosa per l'enter.

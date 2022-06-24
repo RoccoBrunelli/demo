@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="665.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="gameboard" layoutX="24.0" layoutY="65.0" prefHeight="233.0" prefWidth="517.0">
+         <children>
+            <fx:include fx:id="rightAnchor" source="../../ChoicesScreens/gameboardChoice.fxml" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="30.0" layoutY="40.0" stroke="WHITE" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="Seleziona gli studenti da scambiare.">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="542.0" layoutY="359.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Conferma scelta" />
+   </children>
+</AnchorPane>
