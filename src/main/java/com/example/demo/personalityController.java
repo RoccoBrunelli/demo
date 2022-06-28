@@ -97,12 +97,12 @@ public class personalityController {
 
     @FXML
     public void nextScreen(){
-        /*secondscreen.setOpacity(1);
+        secondscreen.setOpacity(1);
         secondscreen.setMouseTransparent(false);
         secondscreen.setDisable(false);
-        secondscreen.setVisible(true);*/
+        secondscreen.setVisible(true);
 
-        HelloApplication.popUp("sources_/fxmls/Personality/Jester/Jester_screen2.fxml");
+        //HelloApplication.popUp("sources_/fxmls/Personality/Jester/Jester_screen2.fxml");
     }
 
     @FXML
