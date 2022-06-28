@@ -7,20 +7,16 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class topSplitController {
-    private personalityController personalityController;
+    private personalityController personallyController;
     private int selectedIsland = 0;
     @FXML public AnchorPane islandsPane;
     @FXML public AnchorPane cloudsPane;
@@ -42,21 +38,26 @@ public class topSplitController {
         gamemsg.clouds = new HashMap<>();
         gamemsg.clouds.put(0, List.of(Color.BLUE, Color.YELLOW, Color.RED));
         gamemsg.clouds.put(1, List.of(Color.BLUE, Color.GREEN, Color.BLUE));
-        gamemsg.clouds.put(2, List.of(Color.YELLOW, Color.PINK, Color.RED));
         updateClouds(gamemsg.clouds);
         updateIslands(gamemsg.islands);
-        updateMother(gamemsg.mother);
+        updateMother(11);
         System.out.println(gamemsg.mother);
     }
 
     public void updateMother(int motherPos){
         for(Node island: islandsPane.getChildren()){
-            if(!island.getId().equals("island"+motherPos))
+            if(!island.getId().equals("island"+motherPos)){
                 island.lookup("#mother").setOpacity(0);
-            else
+                island.lookup("#mother").setDisable(true);
+            }
+            else{
                 island.lookup("#mother").setOpacity(1);
+                island.lookup("#mother").setDisable(false);
+            }
         }
     }
+
+
     public void updateIslands(List<Island> islands){
         islandsPane.getChildren().forEach(x->x.setOpacity(0));
         for(Island island: islands){
@@ -114,35 +115,52 @@ public class topSplitController {
     public void updateClouds(Map<Integer,List<Color>> clouds){
         if(cloudsPane == null)
             return;
-        if(clouds == null){
-            for(Node cloud: cloudsPane.getChildren()){
-                AnchorPane anchor = (AnchorPane) cloud;
-                List<Node> slots = anchor.getChildren().filtered(x->!"cloudimg".equals(x.getId()));
-                for(Node slot: slots){
-                    ImageView slotimg = (ImageView) slot;
-                    slotimg.setImage(null);
-                }
-            }
-            return;
-        }
-        for (Integer i : clouds.keySet()){
+        for (int i=0; i<cloudsPane.getChildren().size(); i++){
             AnchorPane cloud = (AnchorPane) cloudsPane.lookup("#cloud"+i);
             List<Node> slots = cloud.getChildren().filtered(x->!"cloudimg".equals(x.getId()));
-            for(int j=0; j<slots.size() && j<clouds.get(i).size(); j++){
+            if(clouds.get(i) == null){
+                cloud.setDisable(true);
+            } else {
+                cloud.setDisable(false);
+            }
+            for(int j=0; j<slots.size(); j++){
                 ImageView slot = (ImageView) slots.get(j);
-                String studPath = GuiResources.StudentImage(clouds.get(i).get(j));
-                Image student = new Image(getClass().getResource(studPath).toString());
-                slot.setImage(student);
+                if(clouds.get(i) == null || j >= clouds.get(i).size()){
+                    slot.setImage(null);
+                } else {
+                    String studPath = GuiResources.StudentImage(clouds.get(i).get(j));
+                    Image student = new Image(getClass().getResource(studPath).toString());
+                    slot.setImage(student);
+                }
             }
         }
     }
 
     @FXML
     public void onDragOver(DragEvent event){ //necessary for drag and drop
-        if(event.getDragboard().hasString()){
+        String dbString = event.getDragboard().getString();
+        if (dbString == null) {
+            event.consume();
+            return;
+        }
+        if(dbString.contains("Student")){
             event.acceptTransferModes(TransferMode.ANY);
             Node islandOver = (Node) event.getSource();
             islandOver.setEffect(new Glow(0.5));
+        }
+        if(dbString.contains("mother")) {
+            System.out.println("mother enter");
+            int thisID = Integer.parseInt(((Node)event.getSource()).getId().split("island")[1]);
+            int motherID = Integer.parseInt(dbString.split("mother")[1].split("island")[1]);
+            int maxMoves = 3;
+            int minID = thisID - maxMoves;
+            if((minID > 0 && minID <= motherID && motherID <= thisID) ||
+                minID <= 0 && (12 + minID <= motherID || motherID <= thisID)){
+                event.acceptTransferModes(TransferMode.ANY);
+                Node islandOver = (Node) event.getSource();
+                islandOver.setEffect(new Glow(0.5));
+            }
+            System.out.println("mother exit");
         }
         event.consume();
     }
@@ -158,7 +176,16 @@ public class topSplitController {
     public void onDragDropped(DragEvent event){
         Dragboard db = event.getDragboard();
         boolean success = false;
-        if (db.hasString()) {
+        if (db.hasString() && db.getString().contains("mother")){
+            String islandID = "#" + db.getString().split("mother")[1];
+            AnchorPane islandFrom = (AnchorPane) islandsPane.lookup(islandID);
+            AnchorPane islandTo = (AnchorPane) event.getSource();
+            islandFrom.lookup("#mother").setOpacity(0);
+            islandTo.lookup("#mother").setOpacity(1);
+            islandFrom.lookup("#mother").setDisable(true);
+            islandTo.lookup("#mother").setDisable(false);
+        }
+        if (db.hasString() && db.getString().contains("Student")) {
             AnchorPane enter = (AnchorPane) event.getGestureSource();
             ImageView student = (ImageView) enter.lookup("#" + db.getString());
 
@@ -178,8 +205,7 @@ public class topSplitController {
     }
 
     public void setPersonalityController(personalityController controller){
-        this.personalityController = controller;
-
+        this.personallyController = controller;
     }
 
     @FXML
@@ -193,6 +219,14 @@ public class topSplitController {
         int islandId = Integer.parseInt(island.getId().split("island")[1]);
         System.out.println("islandId" + islandId);
         selectedIsland = islandId;
-        this.personalityController.islandChoice(islandId);
+        System.out.println("topSplit: " + this);
+        //this.personallyController.islandChoice(islandId);
+    }
+
+    @FXML
+    public void selectCloud(MouseEvent event){
+        AnchorPane anchor = (AnchorPane) event.getSource();
+        int cloudID = Integer.parseInt(anchor.getId().split("cloud")[1]);
+        anchor.setEffect(new DropShadow());
     }
 }

@@ -36,7 +36,6 @@ public class mainController {
         bottomAnchor.setMinHeight(0);
         bottomAnchor.getTransforms().add(new Scale(scalefactor, scalefactor, 0,0));
         rightAnchor.getTransforms().add(new Scale(scalefactor, scalefactor, 0,0));
-        System.out.println("topAnchor");
         rightAnchor.getChildren().add(new AnchorPane(topAnchor));
         onMagicCard();
         //bottomAnchor.getChildren().forEach(this::scale);
@@ -48,8 +47,8 @@ public class mainController {
         //rightAnchorController.setParentController(this);
     }
 
-    private void onMagicCard(){
-        HelloApplication.popUp("/sources_/fxmls/Personality/Jester/Jester_screen1.fxml");
+    private void onMagicCard() {
+      //HelloApplication.popUp("/sources_/fxmls/Personality/Jester/Jester.fxml");
     }
 
 

@@ -4,6 +4,7 @@ import com.example.demo.unchanged.Card;
 import com.example.demo.unchanged.Color;
 import com.example.demo.unchanged.Constants;
 import com.example.demo.unchanged.TColor;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 
 import java.util.Arrays;
@@ -59,6 +60,14 @@ public final class GuiResources {
     }
     public static String assistantCardImage(Card assistant){
         return "/sources_/GUI_images/graphical_assets/Assistenti/2x/Assistente ("+assistant.getMaxMoves()+").png";
+    }
+
+    public static String personality(String name){
+        return "/sources_/fxmls/Personality/"+name+"/"+name+".fxml";
+    }
+
+    public static String personalityNameFromImage(String imgPath){
+        return imgPath.substring(imgPath.length()-15).split("/")[1].split("\\.")[0];
     }
 
 

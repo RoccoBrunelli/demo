@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalityController">
    <children>
       <AnchorPane layoutX="32.0" layoutY="20.0" prefHeight="363.0" prefWidth="541.0">
          <children>
@@ -40,10 +40,10 @@
                   <Font size="40.0" />
                </font>
             </Text>
-            <Button layoutX="414.0" layoutY="321.0" mnemonicParsing="false" onAction="#returnToGameBoard" style="-fx-background-color: white;" text="Vai alla gameboard" />
-            <AnchorPane fx:id="secondscreen" layoutX="-65.0" layoutY="-26.0" scaleX="0.92" scaleY="0.92">
+            <Button layoutX="414.0" layoutY="321.0" mnemonicParsing="false" onAction="#nextScreen" style="-fx-background-color: white;" text="Vai alla gameboard" />
+            <AnchorPane fx:id="secondscreen" disable="true" layoutX="-65.0" layoutY="-26.0" mouseTransparent="true" scaleX="0.92" scaleY="0.92" visible="false">
                <children>
-                  <fx:include fx:id="rightAnchor" source="Cantor_screen2.fxml" />
+                  <fx:include source="Cantor_screen2.fxml" />
                </children>
             </AnchorPane>
          </children>

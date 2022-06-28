@@ -1,1 +1,0 @@
-In pratica nella schermata2 si dovrebbero rendere selezionabili 3 studenti dalla hall. 

@@ -28,13 +28,13 @@
             </AnchorPane>
             <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="-10.0">
                <image>
-                  <Image url="@../../GUI_images/cerchio%20nero%20pieno.png" />
+                  <Image url="@../../../GUI_images/cerchio%20nero%20pieno.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
                </effect>
             </ImageView>
-            <Text layoutX="20.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+            <Text fx:id="Cost" layoutX="20.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
                <font>
                   <Font size="40.0" />
                </font>

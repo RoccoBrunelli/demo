@@ -5,6 +5,7 @@ import com.example.demo.unchanged.PersonalityFactory;
 import com.example.demo.unchanged.TColor;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,8 @@ import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 import java.util.List;
 
 public class bottomSplitController {
@@ -93,6 +96,8 @@ public class bottomSplitController {
     public void onMagicCardClicked(MouseEvent event) {
         //TODO buy magic card
         ImageView card = (ImageView) event.getSource();
+        String personality = GuiResources.personality(GuiResources.personalityNameFromImage(card.getImage().getUrl()));
+        HelloApplication.popUp(personality);
         magicCardPlayed.setImage(card.getImage());
     }
 

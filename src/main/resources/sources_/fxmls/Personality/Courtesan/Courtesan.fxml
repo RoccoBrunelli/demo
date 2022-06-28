@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.personalityController">
    <children>
       <AnchorPane layoutX="32.0" layoutY="20.0" prefHeight="363.0" prefWidth="541.0">
          <children>
@@ -27,29 +27,29 @@
                   <Text layoutX="14.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La carta contiene 4 studenti. Il giocatore che ne invoca il potere sceglie uno studente da questa carta e lo posiziona all'ingresso della sua Gameboard." wrappingWidth="226.0124626159668" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="248.0" layoutY="192.0" prefHeight="132.0" prefWidth="279.0" style="-fx-background-color: WHITE;">
+            <AnchorPane fx:id="courtesanPanel" layoutX="248.0" layoutY="192.0" prefHeight="132.0" prefWidth="279.0" style="-fx-background-color: WHITE;">
                <children>
                   <Text layoutX="4.0" stroke="WHITE" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="Studenti:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Text>
-                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="60.0" layoutY="9.0">
+                  <ImageView fx:id="student1" fitHeight="53.0" fitWidth="53.0" layoutX="60.0" layoutY="9.0" onMouseClicked="#courtesanSelect" pickOnBounds="true">
                      <image>
                         <Image url="@../../../GUI_images/wooden_pieces/student_blue.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="60.0" layoutY="71.0">
+                  <ImageView fx:id="student3" fitHeight="53.0" fitWidth="53.0" layoutX="60.0" layoutY="71.0" onMouseClicked="#courtesanSelect" pickOnBounds="true">
                      <image>
                         <Image url="@../../../GUI_images/wooden_pieces/student_green.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="160.0" layoutY="71.0">
+                  <ImageView fx:id="student4" fitHeight="53.0" fitWidth="53.0" layoutX="160.0" layoutY="71.0" onMouseClicked="#courtesanSelect" pickOnBounds="true">
                      <image>
                         <Image url="@../../../GUI_images/wooden_pieces/student_pink.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="160.0" layoutY="9.0">
+                  <ImageView fx:id="student2" fitHeight="53.0" fitWidth="53.0" layoutX="160.0" layoutY="9.0" onMouseClicked="#courtesanSelect" pickOnBounds="true">
                      <image>
                         <Image url="@../../../GUI_images/wooden_pieces/student_red.png" />
                      </image>
@@ -58,7 +58,7 @@
             </AnchorPane>
             <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="-8.0" layoutY="-2.0">
                <image>
-                  <Image url="@../../GUI_images/cerchio%20nero%20pieno.png" />
+                  <Image url="@../../../GUI_images/cerchio%20nero%20pieno.png" />
                </image>
                <effect>
                   <ColorAdjust brightness="1.0" />
@@ -69,7 +69,7 @@
                   <Font size="40.0" />
                </font>
             </Text>
-            <Button layoutX="442.0" layoutY="335.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Conferma scelta" />
+            <Button layoutX="442.0" layoutY="335.0" mnemonicParsing="false" onAction="#courtesanConfirmSelection" style="-fx-background-color: white;" text="Conferma scelta" />
          </children>
       </AnchorPane>
    </children>

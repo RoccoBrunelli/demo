@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.islandController">
    <children>
       <Polygon fill="#1f93ff00" layoutX="48.0" layoutY="45.0" points="-6.333339691162109, 76.33332061767578, 59.00000762939453, 76.33332061767578, 85.83332824707031, 24.666664123535156, 59.00000762939453, -21.000001907348633, -6.333339691162109, -21.000001907348633, -31.000001907348633, 24.666664123535156" stroke="#0000000e" strokeType="INSIDE" />
       <ImageView fx:id="blueStudent" fitHeight="18.0" fitWidth="16.0" layoutX="39.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
@@ -49,7 +49,7 @@
       <Text fx:id="yellowStudentsNum" layoutX="71.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text fx:id="redStudentsNum" layoutX="99.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text fx:id="towerNum" layoutX="92.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <ImageView fx:id="mother" fitHeight="59.0" fitWidth="57.0" layoutX="49.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="mother" fitHeight="59.0" fitWidth="57.0" layoutX="49.0" layoutY="37.0" onDragDetected="#onDragMother" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../GUI_images/wooden_pieces/mother_nature.png" />
          </image>
